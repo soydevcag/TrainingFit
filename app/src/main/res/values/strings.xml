@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Training Fit</string>
+    <string name="btnStart">Iniciar Sesión</string>
+    <string name="btnRegister">Regístrate</string>
+    <string name="name">NOMBRE</string>
+    <string name="lastName">APELLIDO</string>
+    <string name="email">E-MAIL</string>
+    <string name="phone">MÓVIL</string>
+    <string name="pass">CONTRASEÑA</string>
+    <string name="google">Google+</string>
+    <string name="facebook">Facebook</string>
+</resources>
