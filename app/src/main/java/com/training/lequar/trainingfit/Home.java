@@ -39,5 +39,16 @@ public class Home extends AppCompatActivity {
                 startActivity(actionLogin);
             }
         });
+
+        Button btnDatos = (Button)findViewById(R.id.btnDatos);
+        //--- BOTON QUE REDIRECCIONA A OTRA ACTIVIDAD--//
+        assert btnDatos != null;
+        btnDatos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent actionLogin = new Intent(Home.this, testJson.class);
+                startActivity(actionLogin);
+            }
+        });
     }
 }

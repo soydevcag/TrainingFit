@@ -27,10 +27,10 @@ public class FlatMap extends FragmentActivity implements OnMapReadyCallback {
     }
     @Override
     public void onMapReady(GoogleMap map) {
-        progressDialog.dismiss();
         // Add a marker and move the camera.
-        LatLng sydney = new LatLng(4, -74);
-        map.addMarker(new MarkerOptions().position(sydney).title("Bogotá"));
-        map.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng bogota = new LatLng(4, -74);
+        map.addMarker(new MarkerOptions().position(bogota).title("Bogotá"));
+        map.moveCamera(CameraUpdateFactory.newLatLng(bogota));
+        progressDialog.dismiss();
     }
 }
