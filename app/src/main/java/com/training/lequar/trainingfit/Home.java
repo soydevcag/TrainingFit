@@ -10,32 +10,32 @@ import android.widget.Button;
  * Created by Camilo Arias on 29/04/16.
  */
 
-public class MainActivity extends AppCompatActivity {
+public class Home extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.home);
 
-        Button btnRegister = (Button)findViewById(R.id.btnRegister);
+        Button btnRegister = (Button)findViewById(R.id.btnFlatMap);
         //--- BOTON QUE REDIRECCIONA A OTRA ACTIVIDAD--//
         assert btnRegister != null;
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    Intent actionRegister = new Intent(MainActivity.this, Register.class);
-                    startActivity(actionRegister);
+                Intent actionRegister = new Intent(Home.this, FlatMap.class);
+                startActivity(actionRegister);
             }
         });
 
-        Button btnStart = (Button)findViewById(R.id.btnStart);
+        Button btnStart = (Button)findViewById(R.id.btnImagenes);
         //--- BOTON QUE REDIRECCIONA A OTRA ACTIVIDAD--//
         assert btnStart != null;
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent actionLogin = new Intent(MainActivity.this, Login.class);
+                Intent actionLogin = new Intent(Home.this, testImage.class);
                 startActivity(actionLogin);
             }
         });
