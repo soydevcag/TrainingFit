@@ -14,14 +14,6 @@ public class RegisterDTO {
 
     }
 
-    public RegisterDTO(String name, String lastName, String email, long phone, String pass) {
-        this.name = name;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
-        this.pass = pass;
-    }
-
     public String getName() {
         return name;
     }

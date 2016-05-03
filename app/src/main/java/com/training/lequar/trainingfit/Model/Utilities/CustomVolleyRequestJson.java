@@ -12,22 +12,28 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.Request;
 import android.util.Log;
+
 import org.json.JSONObject;
 import com.android.volley.VolleyError;
+import com.training.lequar.trainingfit.Model.DTO.RegisterDTO;
 
+import org.json.JSONException;
 /**
  * Created by Belal on 10/8/2015.
  */
 
 public class CustomVolleyRequestJson {
+    public interface VolleyCallback {
+        void onSuccessResponse(String result);
+    }
 
     private static CustomVolleyRequestJson customVolleyRequestJson;
     private static Context context;
     private RequestQueue requestQueue;
     private JsonObjectRequest getRequest;
-    String result = "";
 
     private CustomVolleyRequestJson(Context context) {
+        final VolleyCallback callback = null;
         this.context = context;
         this.requestQueue = getRequestQueue();
         final String url = "http://appslequar.com/crud_api/app/controller/php/petitions/users.php";
@@ -39,8 +45,20 @@ public class CustomVolleyRequestJson {
                     @Override
                     public void onResponse(JSONObject response) {
                         // display response
-                        Log.d("Response", response.toString());
-                        result = response.toString();
+                        try {
+                            Log.d("JsonArray",response.toString());
+                            for(int i=0;i<response.length();i++){
+                                JSONObject jresponse = response.getJSONObject("headers");
+                                String resultado = jresponse.getString("Direccion ip");
+                                Log.d("nickname",resultado);
+                                callback.onSuccessResponse(resultado);
+                                RegisterDTO s = new RegisterDTO();
+                                s.setName(resultado);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
 
                     }
                 },
@@ -76,4 +94,5 @@ public class CustomVolleyRequestJson {
     public JsonObjectRequest getJson() {
         return getRequest;
     }
+
 }
