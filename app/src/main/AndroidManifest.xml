@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.training.lequar.trainingfit">
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <application
-        android:name=".Model.Utilities.Conexion"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:supportsRtl="true" >
@@ -36,6 +35,26 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Login" />
+        </activity>
+        <activity
+            android:theme="@style/registerTheme"
+            android:name=".testImage"
+            android:label="@string/btnStart"
+            android:parentActivityName=".Login"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".testImage" />
+        </activity>
+        <activity
+            android:theme="@style/registerTheme"
+            android:name=".testJson"
+            android:label="@string/btnStart"
+            android:parentActivityName=".Login"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".testJson" />
         </activity>
     </application>
 

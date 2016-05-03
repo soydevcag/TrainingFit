@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    Intent actionRegister = new Intent(MainActivity.this, Register.class);
+                    Intent actionRegister = new Intent(MainActivity.this, testJson.class);
                     startActivity(actionRegister);
             }
         });
