@@ -38,7 +38,6 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.register);
 
         Button btnRegister = (Button)findViewById(R.id.registerBtn);
-        //--- BOTON QUE REDIRECCIONA A OTRA ACTIVIDAD--//
         assert btnRegister != null;
         final RequestQueue queue = Volley.newRequestQueue(this);
         btnRegister.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +83,7 @@ public class Register extends AppCompatActivity {
                 }else{
                         valid = true;
                         }
-                Log.d("Error", String.valueOf(valid));
+
                 if (valid) {
                     final ProgressDialog progressDialog;
                     progressDialog = new ProgressDialog(context);
