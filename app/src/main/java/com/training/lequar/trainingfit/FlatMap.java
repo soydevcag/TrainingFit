@@ -16,6 +16,8 @@ import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.Toast;
 import com.training.lequar.trainingfit.Model.Utilities.GPSTracker;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Marker;
 /**
  * This shows how to change the camera position for the map.
  */
@@ -83,7 +85,7 @@ public class FlatMap extends AppCompatActivity implements OnMapReadyCallback {
         mMap.getUiSettings().setZoomControlsEnabled(false);
 
         // Show Sydney
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(-33.87365, 151.20689), 10));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(4.68, -74.06), 10));
     }
 
     /**
@@ -121,6 +123,7 @@ public class FlatMap extends AppCompatActivity implements OnMapReadyCallback {
             // Ask user to enable GPS/network in settings
             gps.showSettingsAlert();
         }
+        mMap.clear();
         CameraPosition BONDI2 =
                 new CameraPosition.Builder().target(new LatLng(latitude, longitude))
                         .zoom(15.5f)
@@ -128,6 +131,17 @@ public class FlatMap extends AppCompatActivity implements OnMapReadyCallback {
                         .tilt(50)
                         .build();
         changeCamera(CameraUpdateFactory.newCameraPosition(BONDI2));
+        Marker marker = mMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(latitude, longitude))
+                .draggable(true));
+
+        LatLng latLng = marker.getPosition();
+        double la = latLng.latitude+100;
+        double lo = latLng.longitude;
+        String a = String.valueOf(la);
+        Toast.makeText(getBaseContext(), a, Toast.LENGTH_SHORT)
+                .show();
+
     }
 
     /**
