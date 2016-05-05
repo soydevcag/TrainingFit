@@ -1,5 +1,6 @@
 package com.training.lequar.trainingfit;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -44,6 +45,11 @@ public class Register extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final ProgressDialog progressDialog;
+                progressDialog = new ProgressDialog(context);
+                progressDialog.setMessage("Registrando...");
+                progressDialog.show();
+
                 final EditText name = (EditText) findViewById(R.id.name);
                 final EditText lastName = (EditText) findViewById(R.id.lastName);
                 final EditText phone = (EditText) findViewById(R.id.phone);
@@ -56,6 +62,7 @@ public class Register extends AppCompatActivity {
                         {
                             @Override
                             public void onResponse(String response) {
+                                progressDialog.dismiss();
                                 try {
                                     JSONObject jsonObject= new JSONObject(response.toString());
                                     JSONObject objt = jsonObject.getJSONObject("content");
@@ -98,6 +105,7 @@ public class Register extends AppCompatActivity {
                         {
                             @Override
                             public void onErrorResponse(VolleyError error) {
+                                progressDialog.dismiss();
                                 // error
                                 //Log.d("Error.Response", response);
                             }
