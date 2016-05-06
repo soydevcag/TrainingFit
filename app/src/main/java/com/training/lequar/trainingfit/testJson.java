@@ -43,7 +43,7 @@ public class testJson extends AppCompatActivity  {
                 // TODO Auto-generated method stub
                 try {
                     Log.d("JsonArray",response.toString());
-                    for(int i=0;i<response.length();i++){
+                    for(int i=0;i<10;i++){
                         JSONObject jresponse = response.getJSONObject("content");
                         JSONArray resultado = jresponse.getJSONArray("result");
                         String resultado1 = resultado.getString(i);
