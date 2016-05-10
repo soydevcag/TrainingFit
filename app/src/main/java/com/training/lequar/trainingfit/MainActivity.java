@@ -1,21 +1,18 @@
 package com.training.lequar.trainingfit;
 
-import android.Manifest;
-import android.app.Activity;
+
 import android.content.Context;
-import android.content.pm.PackageManager;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
+import com.training.lequar.trainingfit.Model.Utilities.Notifications;
 import com.training.lequar.trainingfit.Model.Utilities.PermissionGPS;
-
-import java.security.Permission;
+import android.os.Build;
+import android.support.v7.app.NotificationCompat;
+import android.app.NotificationManager;
 
 /**
  * Created by Camilo Arias on 29/04/16.
@@ -23,16 +20,28 @@ import java.security.Permission;
 
 public class MainActivity extends AppCompatActivity {
 
+    Context context = this;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        PermissionGPS pGPS = new PermissionGPS();
-        pGPS.setContext(this);
-        pGPS.setActivity(MainActivity.this);
-        pGPS.permissionGPS(pGPS.getContext());
+        Intent service = new Intent(this, Notifications.class);
+
+        startService(service);
+
+
+
+        if(Build.VERSION.SDK_INT >= 6.0){
+            //Solicitar permisos GPS
+            PermissionGPS pGPS = new PermissionGPS();
+            pGPS.setContext(this);
+            pGPS.setActivity(MainActivity.this);
+            pGPS.permissionGPS(pGPS.getContext());
+        }
+
 
         Button btnRegister = (Button)findViewById(R.id.btnRegister);
         //--- BOTON QUE REDIRECCIONA A OTRA ACTIVIDAD--//
@@ -40,6 +49,14 @@ public class MainActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                NotificationCompat.Builder builder = (NotificationCompat.Builder) new NotificationCompat.Builder(
+                        getBaseContext())
+                        .setSmallIcon(R.drawable.danger)
+                        .setContentTitle("Training")
+                        .setContentText("Esto es una notificación")
+                        .setWhen(System.currentTimeMillis());
+                NotificationManager nManager = (NotificationManager) getSystemService(context.NOTIFICATION_SERVICE);
+                nManager.notify(12345, builder.build());
                     Intent actionRegister = new Intent(MainActivity.this, Register.class);
                     startActivity(actionRegister);
             }
